@@ -21,11 +21,13 @@ public class Controller_Player : MonoBehaviour
 
     public float distanceRay,downDistanceRay;
 
-    private bool canMoveLeft, canMoveRight,canJump;
-    internal bool onFloor;
-
+    public static bool canMoveLeft, canMoveRight,canJump;
+    public static bool onFloor;
+    public bool floorCheck;
+    public bool JumpCheck;
     private void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         col = GetComponent<BoxCollider>();
         rb.constraints = RigidbodyConstraints.FreezePositionX| RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotation;
@@ -37,10 +39,14 @@ public class Controller_Player : MonoBehaviour
         {
             Movement();
         }
+
+        
     }
 
     private void Update()
     {
+        JumpCheck = canJump;
+        floorCheck = onFloor;
         if (GameManager.actualPlayer == playerNumber)
         {
             Jump();
@@ -63,6 +69,7 @@ public class Controller_Player : MonoBehaviour
 
             if (IsOnSomething())
             {
+
                 canJump = true;
             }
             else
@@ -143,6 +150,8 @@ public class Controller_Player : MonoBehaviour
         }
     }
 
+
+
     public virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Water"))
@@ -154,7 +163,7 @@ public class Controller_Player : MonoBehaviour
         {
             onFloor = true;
         }
-
+    
     }
 
     private void OnCollisionExit(Collision collision)

@@ -10,6 +10,12 @@ public class Controller_Player_Floating : Controller_Player
         {
             onFloor = true;
         }
+
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            onFloor = true;
+        }
+
         //This makes the player invulnerable to water.
     }
 }

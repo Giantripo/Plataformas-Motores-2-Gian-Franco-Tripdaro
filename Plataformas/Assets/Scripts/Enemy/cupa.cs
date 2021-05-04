@@ -2,33 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class cupa : MonoBehaviour
 {
-
-
+    public float vel;
+   
+    public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(new Vector3(0, 0, -90));
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (this.transform.position.x > -60)
-        //{
-        //    Destroy(this.gameObject);
-        //}
+        rb.velocity = new Vector3(1 * vel, rb.velocity.y, 0);
+
+        if (this.transform.position.x > -60)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(this.gameObject);
+            vel = vel * -1;
         }
 
-        if (collision.gameObject.CompareTag("Player") && Controller_Player.onFloor == true )
+            if (collision.gameObject.CompareTag("Player") && Controller_Player.onFloor == true)
         {
             GameManager.gameOver = true;
         }
@@ -38,4 +41,5 @@ public class BulletController : MonoBehaviour
             Controller_Player.onFloor = true;
         }
     }
+
 }
