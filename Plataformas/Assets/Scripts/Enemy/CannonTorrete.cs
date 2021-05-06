@@ -7,7 +7,7 @@ public class CannonTorrete : MonoBehaviour
     public float velDisparo;
     public Rigidbody balaPrefab;
     public Transform disparador;
-    public Rigidbody balaImpulso;
+    private Rigidbody balaImpulso;
     public float cont;
 
     void Start()

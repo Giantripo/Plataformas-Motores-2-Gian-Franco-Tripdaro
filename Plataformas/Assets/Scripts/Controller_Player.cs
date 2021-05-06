@@ -9,7 +9,7 @@ public class Controller_Player : MonoBehaviour
 
     public float speed = 5;
 
-    public int playerNumber;
+    public  int playerNumber;
 
     public Rigidbody rb;
 
@@ -92,6 +92,10 @@ public class Controller_Player : MonoBehaviour
                     {
                         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
                     }
+                    if (downHit.collider.gameObject.CompareTag("Enemy"))
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }
@@ -163,7 +167,9 @@ public class Controller_Player : MonoBehaviour
         {
             onFloor = true;
         }
-    
+   
+
+
     }
 
     private void OnCollisionExit(Collision collision)

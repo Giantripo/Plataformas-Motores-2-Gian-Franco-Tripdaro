@@ -35,7 +35,7 @@ public class BulletController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && Controller_Player.onFloor == false)
         {
             Destroy(this.gameObject);
-            Controller_Player.onFloor = true;
+            //Controller_Player.onFloor = true;
         }
     }
 }
