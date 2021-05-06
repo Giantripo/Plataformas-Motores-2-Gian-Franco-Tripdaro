@@ -5,19 +5,19 @@ using UnityEngine;
 public class ControllerPlayerPlane :  Controller_Player
 {
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Jump();
-            rb.useGravity = false;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            rb.useGravity = true;
-        }
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.W))
+    //    {
+    //        Jump();
+    //        rb.useGravity = false;
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.S))
+    //    {
+    //        rb.useGravity = true;
+    //    }
 
-    }
+    //}
 
     private int jumpCounter = 0;
 
@@ -32,6 +32,7 @@ public class ControllerPlayerPlane :  Controller_Player
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
+                rb.useGravity = false;
                 jumpCounter = 1;
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             }
@@ -42,6 +43,7 @@ public class ControllerPlayerPlane :  Controller_Player
             {
                 if (jumpCounter > 0)
                 {
+                    rb.useGravity = true;
                     rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
                     jumpCounter--;
                 }
