@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
 
     public List<Controller_Player> players;
 
+
     void Start()
     {
+      
         Physics.gravity = new Vector3(0, -30, 0);
         gameOver = false;
         winCondition = false;
@@ -53,8 +55,9 @@ public class GameManager : MonoBehaviour
         {
             if (actualPlayer <= 0)
             {
-                actualPlayer = 7;
+                actualPlayer = 11;
                 SetConstraits();
+
             }
             else
             {
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (actualPlayer >= 7)
+            if (actualPlayer >= 11)
             {
                 actualPlayer = 0;
                 SetConstraits();
