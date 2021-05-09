@@ -22,14 +22,10 @@ public class BalaPlayer : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            GameManager.gameOver = true;
-        }
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(this.gameObject);
+            Destroy(other.gameObject);
             //Controller_Player.onFloor = true;
         }
     }
